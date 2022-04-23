@@ -21,7 +21,6 @@ class App extends Component {
     
     render() {
     let _title, _content = null;
-
     if(this.state.mode === 'welcome'){
       _title = 'Welcome';
       _content = 'Welcome to React!';
