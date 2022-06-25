@@ -70,6 +70,8 @@ function Register() {
           </tr>
         </table>
       </div>
+        <button onClick={""}>회원가입</button>
+        <button onClick={""}>로그인</button>
     </div>
   );
 }
