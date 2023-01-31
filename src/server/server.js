@@ -6,7 +6,6 @@ const router = express.Router();
 const maria = require('./database/connect/maria');
 maria.connect();
 
-
 // 서버 시작
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
@@ -33,9 +32,21 @@ router.get('/board/create', (req, res) => {
                 if(!err) {
                     res.send(rows);
             } else {
-                console.log(`err >> ${err}`)
+                console.error(`err >> ${err}`)
                 res.send(err);
-            };
+            }
     });
 });
 
+router.get('/board/list', (req, res)=>{
+    const query = `select * from board`;
+
+    maria.query(query, (err, rows)=>{
+        if(err) {
+            console.error('axios err >> ',err);
+            res.send(err);
+        } else {
+            res.send(rows);
+        }
+    });
+});

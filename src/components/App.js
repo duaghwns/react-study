@@ -1,6 +1,12 @@
-import React, { Component, useState, ReactDOM, useRef } from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import axios from 'axios';
+import React, { 
+  Component
+  , useState
+  , ReactDOM
+  , useRef 
+} from 'react';
 
+import NavBar from './NavBar';
 const App =()=> {
   const [click, setClick ] = useState(0);
 
@@ -9,8 +15,14 @@ const App =()=> {
     setClick(click+1);
   }
 
+  axios.get({method:'get', url:'/board/list'})
+    .then(jsonData => {
+      console.log('axios >> ', jsonData);
+    });
+
   return (
     <div className="App">
+      <NavBar/>
       <h1>Todo List App</h1>
       <h2>{click}</h2>
       <input type="text" className="asdf" placeholder="React" value=""/>
