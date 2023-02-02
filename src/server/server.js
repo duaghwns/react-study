@@ -39,6 +39,7 @@ router.get('/board/create', (req, res) => {
 });
 
 router.get('/board/list', (req, res)=>{
+    console.log('params : ',req.params);
     const query = `select * from board`;
 
     maria.query(query, (err, rows)=>{
